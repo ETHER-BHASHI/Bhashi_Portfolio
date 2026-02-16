@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhashi Sharma - Data Analyst Turning Numbers Into Stories</title>
+    <meta name="description" content="Data Analyst , Risk Assessment & Process Improvement Specialist. Transforming complex datasets into strategic insights through Python, Machine Learning, and creative problem-solving.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anybody:wght@300;400;600;800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #f5f1e8;
+            --dark: #1a1a1a;
+            --accent-blue: #3b82f6;
+            --accent-green: #10b981;
+            --accent-orange: #f97316;
+            --accent-purple: #8b5cf6;
+            --text-gray: #6b7280;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Anybody', sans-serif;
+            background: var(--cream);
+            color: var(--dark);
+            overflow-x: hidden;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><circle cx="10" cy="10" r="8" fill="%233b82f6" opacity="0.5"/></svg>') 10 10, auto;
+        }
+
+        .mono {
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 2rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(245, 241, 232, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--dark);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            transform: rotate(-2deg);
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: rotate(2deg) scale(1.1);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            position: relative;
+            transition: transform 0.2s;
+        }
+
+        nav a:hover {
+            transform: translateY(-2px);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--accent-blue);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            padding: 10rem 3rem 5rem;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .floating-badge {
+            position: absolute;
+            padding: 0.75rem 1.5rem;
+            background: white;
+            border: 2px solid var(--dark);
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 4px 4px 0 var(--dark);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .badge-1 {
+            top: 15%;
+            right: 10%;
+            transform: rotate(8deg);
+            animation-delay: 0s;
+        }
+
+        .badge-2 {
+            top: 40%;
+            right: 5%;
+            transform: rotate(-5deg);
+            animation-delay: 2s;
+            background: var(--accent-blue);
+            color: white;
+            border-color: var(--accent-blue);
+        }
+
+        .badge-3 {
+            bottom: 35%;
+            left: 78%;
+            transform: rotate(12deg);
+            animation-delay: 4s;
+            background: var(--accent-green);
+            color: white;
+            border-color: var(--accent-green);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(8deg); }
+            50% { transform: translateY(-20px) rotate(12deg); }
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .highlight {
+            display: inline-block;
+            position: relative;
+            padding: 0 0.5rem;
+        }
+
+        .highlight-blue {
+            background: linear-gradient(180deg, transparent 60%, var(--accent-blue) 60%);
+            transform: rotate(-1deg);
+        }
+
+        .highlight-green {
+            background: linear-gradient(180deg, transparent 60%, var(--accent-green) 60%);
+            transform: rotate(1deg);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
+            max-width: 600px;
+            line-height: 1.6;
+            margin-bottom: 3rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 2.5rem;
+            background: var(--dark);
+            color: var(--cream);
+            text-decoration: none;
+            font-weight: 600;
+            border: 3px solid var(--dark);
+            box-shadow: 6px 6px 0 var(--accent-orange);
+            transition: all 0.2s;
+            transform: rotate(-1deg);
+        }
+
+        .cta-button:hover {
+            transform: rotate(0deg) translate(-3px, -3px);
+            box-shadow: 9px 9px 0 var(--accent-orange);
+        }
+
+        /* Stats Section */
+        .stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 5rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-box {
+            background: white;
+            border: 3px solid var(--dark);
+            padding: 2rem;
+            min-width: 180px;
+            box-shadow: 5px 5px 0 var(--dark);
+            transition: transform 0.3s;
+        }
+
+        .stat-box:nth-child(1) { transform: rotate(-2deg); }
+        .stat-box:nth-child(2) { transform: rotate(1deg); }
+        .stat-box:nth-child(3) { transform: rotate(-1.5deg); }
+
+        .stat-box:hover {
+            transform: rotate(0deg) translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-arrow {
+            font-size: 2rem;
+            display: block;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 8rem 3rem;
+            position: relative;
+        }
+
+        .section-number {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 5rem;
+            font-weight: 800;
+            color: rgba(0, 0, 0, 0.03);
+            position: absolute;
+            top: 2rem;
+            left: 3rem;
+            z-index: -1;
+        }
+
+        h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 4rem;
+            max-width: 600px;
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+            border-top: 3px solid var(--dark);
+            border-bottom: 3px solid var(--dark);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+
+        .about-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .principles {
+            margin-top: 3rem;
+        }
+
+        .principle-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: var(--cream);
+            border: 2px solid var(--dark);
+            transform: rotate(-0.5deg);
+            transition: transform 0.3s;
+        }
+
+        .principle-item:nth-child(even) {
+            transform: rotate(0.5deg);
+        }
+
+        .principle-item:hover {
+            transform: rotate(0deg) translateX(10px);
+        }
+
+        .principle-icon {
+            font-size: 2rem;
+        }
+
+        .info-boxes {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .info-box {
+            background: var(--cream);
+            border: 3px solid var(--dark);
+            padding: 2rem;
+            box-shadow: 6px 6px 0 var(--accent-blue);
+        }
+
+        .info-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-decoration: underline;
+            text-decoration-color: var(--accent-orange);
+            text-decoration-thickness: 3px;
+            text-underline-offset: 8px;
+        }
+
+        .info-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .info-detail {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        .cert-list {
+            list-style: none;
+        }
+
+        .cert-list li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            position: relative;
+        }
+
+        .cert-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: white;
+            border: 3px solid var(--dark);
+            padding: 2rem;
+            box-shadow: 5px 5px 0 var(--dark);
+            transition: all 0.3s;
+        }
+
+        .skill-card:nth-child(1) { transform: rotate(-1deg); }
+        .skill-card:nth-child(2) { transform: rotate(1deg); }
+        .skill-card:nth-child(3) { transform: rotate(-0.5deg); }
+        .skill-card:nth-child(4) { transform: rotate(0.5deg); }
+
+        .skill-card:hover {
+            transform: rotate(0deg) translateY(-10px);
+            box-shadow: 8px 8px 0 var(--dark);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            padding: 0.5rem 1rem;
+            background: var(--cream);
+            border: 2px solid var(--dark);
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .tag:hover {
+            background: var(--dark);
+            color: var(--cream);
+        }
+
+        /* Experience Section */
+        .experience {
+            background: linear-gradient(180deg, var(--cream) 0%, white 100%);
+        }
+
+        .timeline {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--dark);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 80px;
+            margin-bottom: 5rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 18px;
+            top: 0;
+            width: 28px;
+            height: 28px;
+            background: var(--accent-blue);
+            border: 4px solid var(--dark);
+            border-radius: 50%;
+        }
+
+        .timeline-content {
+            background: white;
+            border: 3px solid var(--dark);
+            padding: 2.5rem;
+            box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.1);
+            transform: rotate(-0.5deg);
+            transition: transform 0.3s;
+        }
+
+        .timeline-content:hover {
+            transform: rotate(0deg);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .timeline-role {
+            font-size: 1.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .timeline-company {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+        }
+
+        .timeline-date {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            background: var(--accent-orange);
+            color: white;
+            border: 2px solid var(--dark);
+            font-weight: 600;
+        }
+
+        .achievement-box {
+            background: var(--cream);
+            border-left: 5px solid var(--accent-blue);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .achievement-number {
+            color: var(--accent-blue);
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+
+        .timeline-list {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .timeline-list li {
+            padding-left: 2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            line-height: 1.7;
+        }
+
+        .timeline-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+            font-weight: bold;
+        }
+
+        .tech-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px dashed var(--dark);
+        }
+
+        .tech-badge {
+            padding: 0.4rem 0.9rem;
+            background: var(--dark);
+            color: var(--cream);
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 2px solid var(--dark);
+        }
+
+        /* Projects Section */
+        .projects {
+            background: white;
+            border-top: 3px solid var(--dark);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 3rem;
+        }
+
+        .project-card {
+            background: var(--cream);
+            border: 3px solid var(--dark);
+            padding: 3rem;
+            box-shadow: 8px 8px 0 var(--dark);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:nth-child(odd) {
+            transform: rotate(-1deg);
+        }
+
+        .project-card:nth-child(even) {
+            transform: rotate(1deg);
+        }
+
+        .project-card:hover {
+            transform: rotate(0deg) translateY(-10px);
+            box-shadow: 12px 12px 0 var(--dark);
+        }
+
+        .project-number {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 4rem;
+            font-weight: 800;
+            color: rgba(0, 0, 0, 0.05);
+        }
+
+        .project-header {
+            margin-bottom: 2rem;
+        }
+
+        .project-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .project-type {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--accent-blue);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .project-description {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .project-highlights {
+            margin: 2rem 0;
+        }
+
+        .project-highlights h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .project-highlights ul {
+            list-style: none;
+        }
+
+        .project-highlights li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .project-highlights li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent-orange);
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .metrics {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: white;
+            border: 2px solid var(--dark);
+        }
+
+        .metric {
+            text-align: center;
+            flex: 1;
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            color: var(--accent-blue);
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-gray);
+        }
+
+        .project-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px dashed var(--dark);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .project-tag {
+            padding: 0.4rem 0.9rem;
+            background: var(--dark);
+            color: var(--cream);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .project-link {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.2s;
+        }
+
+        .project-link:hover {
+            transform: translateX(5px);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--dark);
+            color: var(--cream);
+            text-align: center;
+        }
+
+        .contact h2 {
+            color: var(--cream);
+        }
+
+        .contact .section-subtitle {
+            color: rgba(245, 241, 232, 0.7);
+            margin: 0 auto 4rem;
+        }
+
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto 4rem;
+        }
+
+        .contact-card {
+            background: var(--cream);
+            color: var(--dark);
+            border: 3px solid var(--cream);
+            padding: 2.5rem 2rem;
+            text-decoration: none;
+            display: block;
+            box-shadow: 6px 6px 0 rgba(245, 241, 232, 0.3);
+            transition: all 0.3s;
+            transform: rotate(-1deg);
+        }
+
+        .contact-card:nth-child(even) {
+            transform: rotate(1deg);
+        }
+
+        .contact-card:hover {
+            transform: rotate(0deg) translateY(-8px);
+            box-shadow: 8px 8px 0 rgba(245, 241, 232, 0.5);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-value {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .contact-footer {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem;
+            background: rgba(245, 241, 232, 0.1);
+            border: 2px solid var(--cream);
+        }
+
+        .contact-footer p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: rgba(245, 241, 232, 0.9);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--cream);
+            padding: 3rem;
+            border-top: 3px solid var(--cream);
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-text {
+            color: rgba(245, 241, 232, 0.7);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        /* Decorative Elements */
+        .doodle {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.1;
+        }
+
+        .doodle-circle {
+            width: 200px;
+            height: 200px;
+            border: 4px solid var(--dark);
+            border-radius: 50%;
+            top: 20%;
+            right: 5%;
+        }
+
+        .doodle-line {
+            width: 150px;
+            height: 4px;
+            background: var(--accent-orange);
+            bottom: 30%;
+            left: 10%;
+            transform: rotate(-15deg);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .about-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                padding: 1.5rem 2rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            section {
+                padding: 5rem 2rem;
+            }
+
+            .hero {
+                padding: 8rem 2rem 3rem;
+            }
+
+            .stats {
+                gap: 1.5rem;
+            }
+
+            .floating-badge {
+                display: none;
+            }
+
+            h1 {
+                font-size: clamp(2.5rem, 10vw, 4rem);
+            }
+
+            .timeline-item {
+                padding-left: 60px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-content {
+                text-align: center;
+            }
+
+            .stats {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .stat-box {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .contact-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#hero" class="logo">BS</a>
+        <div class="nav-links">
+            <a href="#about">about</a>
+            <a href="#experience">work</a>
+            <a href="#projects">projects</a>
+            <a href="#contact">connect</a>
+        </div>
+    </nav>
+
+    <audio id="click-sound" preload="auto">
+        <source src="click.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="floating-badge badge-1">92.38% ML Accuracy</div>
+        <div class="floating-badge badge-2">₹24L Saved</div>
+        <div class="floating-badge badge-3">NIMS Japan</div>
+        
+        <div class="hero-content animate-in">
+            <div class="hero-label mono">DATA ANALYST • RISK ASSESSMENT • PROCESS IMPROVEMENT SPECIALIST</div>
+            <h1>
+                Turning <span class="highlight highlight-blue">numbers</span> 
+                into <span class="highlight highlight-green">stories</span>
+            </h1>
+            <p class="hero-subtitle">
+                Operations Manager at Amazon. Building tools that save millions. Crafting ML models with 92%+ accuracy. Making data dance. 📊
+            </p>
+            <a href="#contact" class="cta-button">Let's Connect →</a>
+        </div>
+
+        <div class="stats animate-in delay-2">
+            <div class="stat-box">
+                <div class="stat-number">35.8%</div>
+                <div class="stat-label mono">TPH Boost</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">₹24L</div>
+                <div class="stat-label mono">Cost Savings</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">92.38%</div>
+                <div class="stat-label mono">ML Accuracy</div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <div class="scroll-arrow">↓</div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="section-number">01</div>
+        <h2>Who am I?</h2>
+        <div class="section-subtitle">A curious analyst who loves turning messy data into clear insights</div>
+
+        <div class="about-grid">
+            <div>
+                <p class="about-text">
+                    I'm a Data Analyst and Operations Manager who believes every dataset has a story to tell. With a B.Tech in Mechanical & Automation Engineering (CGPA: 9.22), I've built a career at the intersection of analytics, operations, and creative problem-solving.
+                </p>
+                <p class="about-text">
+                    From optimizing Amazon's fulfillment processes to researching perovskite solar cells at NIMS Japan and analyzing structural dynamics at IIT Delhi, I thrive on challenges that require both technical precision and strategic thinking.
+                </p>
+                <p class="about-text">
+                    Whether I'm building Excel macros that track 1000+ shipments in real-time, training neural networks with 92%+ accuracy, or designing LSTM models for stock prediction, I approach every problem with curiosity and a commitment to measurable impact.
+                </p>
+
+                <div class="principles">
+                    <div class="principle-item">
+                        <div class="principle-icon">📊</div>
+                        <div>Data tells stories — I just help it speak clearly</div>
+                    </div>
+                    <div class="principle-item">
+                        <div class="principle-icon">🎯</div>
+                        <div>Precision in analysis, boldness in execution</div>
+                    </div>
+                    <div class="principle-item">
+                        <div class="principle-icon">🚀</div>
+                        <div>Every optimization is an opportunity to innovate</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-boxes">
+                <div class="info-box">
+                    <h3>Education</h3>
+                    <div class="info-item">
+                        <div class="info-title">B.Tech in Mechanical & Automation Engineering</div>
+                        <div class="info-detail">Indira Gandhi Delhi Technical University for Women</div>
+                        <div class="info-detail">CGPA: 9.22 | 2021-2025</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-title">Scholar's Gold Medal 🏅</div>
+                        <div class="info-detail">7 Consecutive Years (2013-2020)</div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <h3>Certifications</h3>
+                    <ul class="cert-list">
+                        <li>Foundations of Business Analysis — Coursera</li>
+                        <li>Data Engineering — Amazon</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="skills" id="skills">
+        <div class="section-number">02</div>
+        <h2>What I work with</h2>
+        <div class="section-subtitle">The tools and technologies that power my data magic</div>
+
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon">💻</div>
+                <h3>Programming & Databases</h3>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">MySQL</span>
+                    <span class="tag">VBA</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">📊</div>
+                <h3>Analytics & Viz</h3>
+                <div class="tags">
+                    <span class="tag">Advanced Excel</span>
+                    <span class="tag">Power BI</span>
+                    <span class="tag">Pivot Tables</span>
+                    <span class="tag">Power Query</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">🤖</div>
+                <h3>ML & AI</h3>
+                <div class="tags">
+                    <span class="tag">Deep Learning</span>
+                    <span class="tag">Neural Networks</span>
+                    <span class="tag">LSTM</span>
+                    <span class="tag">Feature Engineering</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">⚙️</div>
+                <h3>Operations</h3>
+                <div class="tags">
+                    <span class="tag">Process Optimization</span>
+                    <span class="tag">Stakeholder Mgmt</span>
+                    <span class="tag">Documentation</span>
+                    <span class="tag">Hubble</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="experience" id="experience">
+        <div class="section-number">03</div>
+        <h2>Where I've worked</h2>
+        <div class="section-subtitle">Building impact through data-driven solutions</div>
+
+        <div class="timeline">
+            <!-- Amazon -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="timeline-role">Operations Manager-1</div>
+                            <div class="timeline-company">Amazon, Gurgaon</div>
+                        </div>
+                        <div class="timeline-date">JAN 2025 - PRESENT</div>
+                    </div>
+
+                    <div class="achievement-box">
+                        Delivered <span class="achievement-number">35.8% TPH improvement</span> and 
+                        <span class="achievement-number">14% boost</span> in Good Read Percentage — 
+                        generating <span class="achievement-number">₹24 Lakh</span> annual cost savings
+                    </div>
+
+                    <ul class="timeline-list">
+                        <li>Developed <strong>Velocity Vue macro</strong> — one-click inbound visibility tool automating vehicle tracking, unloading hierarchy, and end-to-end status monitoring</li>
+                        <li>Built outbound yardstick tool for labor planning and CPT-wise automated macro for real-time lane-level volume tracking</li>
+                        <li>Implemented Fast Start Mechanism boosting operational speed and accuracy across site operations</li>
+                        <li>Created comprehensive site documentation for leadership presentations and strategic planning</li>
+                        <li>Collaborated with stakeholders to overcome new configuration challenges and initiated capping mechanism for peak volume alignment</li>
+                    </ul>
+
+                    <div class="tech-badges">
+                        <span class="tech-badge">Excel VBA</span>
+                        <span class="tech-badge">Process Optimization</span>
+                        <span class="tech-badge">Data Analytics</span>
+                        <span class="tech-badge">Automation</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NIMS Japan -->
+            <div class="timeline-item">
+                <div class="timeline-dot" style="background: var(--accent-green);"></div>
+                <div class="timeline-content">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="timeline-role">Summer Research Intern</div>
+                            <div class="timeline-company">National Institute for Material Science, Tsukuba, Japan</div>
+                        </div>
+                        <div class="timeline-date">MAY - JULY 2024</div>
+                    </div>
+
+                    <p style="font-style: italic; color: var(--text-gray); margin-bottom: 1.5rem;">
+                        Advised by Dr. DA, Bo — Senior Researcher, NIMS
+                    </p>
+
+                    <ul class="timeline-list">
+                        <li>Deployed <strong>deep learning algorithms</strong> to predict power conversion efficiency of KSnI3 Perovskite Solar cells</li>
+                        <li>Curated and analyzed comprehensive datasets for ML applications</li>
+                        <li>Implemented feature engineering techniques maximizing model accuracy using optimal features from <strong>52 parameters</strong></li>
+                        <li>Applied advanced preprocessing and feature selection methodologies</li>
+                    </ul>
+
+                    <div class="tech-badges">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">Deep Learning</span>
+                        <span class="tech-badge">Feature Engineering</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IIT Delhi -->
+            <div class="timeline-item">
+                <div class="timeline-dot" style="background: var(--accent-orange);"></div>
+                <div class="timeline-content">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="timeline-role">Winter Research Intern</div>
+                            <div class="timeline-company">Indian Institute of Technology, Delhi</div>
+                        </div>
+                        <div class="timeline-date">DEC 2023 - FEB 2024</div>
+                    </div>
+
+                    <p style="font-style: italic; color: var(--text-gray); margin-bottom: 1.5rem;">
+                        Advised by Prof. Dr. S.P. Singh — Dept. of Mechanical Engineering
+                    </p>
+
+                    <ul class="timeline-list">
+                        <li>Analyzed deflection of flexible beams using <strong>Video & Image processing</strong> in MATLAB</li>
+                        <li>Developed MATLAB code for automated image processing and beam deflection detection</li>
+                        <li>Presented research at <strong>ISME Conference'24</strong> at DTU</li>
+                        <li>🏆 <strong>Best Paper Award</strong> — "Experimental Evaluation of Dynamics of Steel Wire Rope"</li>
+                        <link href="https://fonts.googleapis.com/css2?family=Anybody:wght@300;400;600;800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+                    </ul>
+
+                    <div class="tech-badges">
+                        <span class="tech-badge">MATLAB</span>
+                        <span class="tech-badge">Image Processing</span>
+                        <span class="tech-badge">Research</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="projects" id="projects">
+        <div class="section-number">04</div>
+        <h2>What I've built</h2>
+        <div class="section-subtitle">ML models and data solutions that solve real problems</div>
+
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <div class="project-number">01</div>
+                <div class="project-header">
+                    <div class="project-title">Credit Risk Assessment System</div>
+                    <div class="project-type">Machine Learning • Data Analysis</div>
+                </div>
+
+                <p class="project-description">
+                    Built a comprehensive credit risk assessment system using neural networks to predict loan default probability with industry-leading accuracy.
+                </p>
+
+                <div class="project-highlights">
+                    <h4>Key Achievements:</h4>
+                    <ul>
+                        <li>Employed EDA to pre-process <strong>5000+ records</strong>, rectifying all missing data</li>
+                        <li>Identified key feature relationships achieving <strong>15% precision increase</strong></li>
+                        <li>Applied Artificial Neural Network (1 input + 2 hidden + 1 output layer)</li>
+                        <li>Trained on <strong>10,000+ records</strong> achieving <strong>92.38% accuracy</strong></li>
+                    </ul>
+                </div>
+
+                <div class="metrics">
+                    <div class="metric">
+                        <div class="metric-value">92.38%</div>
+                        <div class="metric-label">Accuracy</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">10K+</div>
+                        <div class="metric-label">Records</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">+15%</div>
+                        <div class="metric-label">Precision</div>
+                    </div>
+                </div>
+
+                <div class="project-footer">
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">Neural Networks</span>
+                        <span class="project-tag">EDA</span>
+                    </div>
+                    <a href="https://github.com/ETHER-BHASHI" class="project-link" target="_blank">
+                        View Code →
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card">
+                <div class="project-number">02</div>
+                <div class="project-header">
+                    <div class="project-title">Stock Market Predictor</div>
+                    <div class="project-type">LSTM • Time Series Forecasting</div>
+                </div>
+
+                <p class="project-description">
+                    Developed LSTM-based forecasting system analyzing and predicting stock prices for major tech companies with exceptional accuracy.
+                </p>
+
+                <div class="project-highlights">
+                    <h4>Key Features:</h4>
+                    <ul>
+                        <li>Analyzed Apple, Amazon, Google, Microsoft using <strong>yfinance</strong> (253 datapoints)</li>
+                        <li>Visualized trends with <strong>Seaborn & Matplotlib</strong></li>
+                        <li>Conducted volatility assessments and correlation analysis</li>
+                        <li>Built LSTM model (2 layers + 2 dense) with 60-step sequences</li>
+                        <li>Achieved <strong>RMSE of 3.23</strong> — strong predictive performance</li>
+                    </ul>
+                </div>
+
+                <div class="metrics">
+                    <div class="metric">
+                        <div class="metric-value">3.23</div>
+                        <div class="metric-label">RMSE</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">253</div>
+                        <div class="metric-label">Data Points</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">4</div>
+                        <div class="metric-label">Companies</div>
+                    </div>
+                </div>
+
+                <div class="project-footer">
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">LSTM</span>
+                        <span class="project-tag">Time Series</span>
+                    </div>
+                    <a href="https://github.com/ETHER-BHASHI" class="project-link" target="_blank">
+                        View Code →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <h2>Let's build something</h2>
+        <div class="section-subtitle">
+            Always interested in new challenges, data puzzles, and opportunities to create impact
+        </div>
+
+        <div class="contact-cards">
+            <a href="mailto:bhashi.one@gmail.com" class="contact-card">
+                <div class="contact-icon">📧</div>
+                <div class="contact-label">Email</div>
+                <div class="contact-value">bhashi.one@gmail.com</div>
+            </a>
+
+            <a href="https://linkedin.com/in/bhashi-62117222a/" class="contact-card" target="_blank">
+                <div class="contact-icon">💼</div>
+                <div class="contact-label">LinkedIn</div>
+                <div class="contact-value">Connect</div>
+            </a>
+
+            <a href="https://github.com/ETHER-BHASHI" class="contact-card" target="_blank">
+                <div class="contact-icon">💻</div>
+                <div class="contact-label">GitHub</div>
+                <div class="contact-value">View Code</div>
+            </a>
+
+            <a href="https://leetcode.com/bhashi_1/" class="contact-card" target="_blank">
+                <div class="contact-icon">🧩</div>
+                <div class="contact-label">LeetCode</div>
+                <div class="contact-value">Solutions</div>
+            </a>
+        </div>
+
+        <div class="contact-footer">
+            <p>
+                Looking for someone who can transform messy spreadsheets into strategic insights, 
+                build ML models that actually work, and make data tell compelling stories? 
+                Let's talk. 📊✨
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-text">© 2026 Bhashi Sharma • Built with data & creativity</div>
+            <div class="footer-links">
+                <a href="mailto:bhashi.one@gmail.com">Email</a>
+                <a href="https://linkedin.com/in/bhashi-62117222a/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/ETHER-BHASHI" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+    const clickSound = document.getElementById("click-sound");
+
+    if (!clickSound) {
+        console.error("❌ click-sound not found");
+        return;
+    }
+
+    // Unlock audio on first user interaction
+    const unlock = () => {
+        clickSound.play().then(() => {
+            clickSound.pause();
+            clickSound.currentTime = 0;
+            console.log("🔓 Audio unlocked");
+        }).catch(() => {});
+        document.removeEventListener("click", unlock);
+    };
+    document.addEventListener("click", unlock, { once: true });
+
+    document.addEventListener("click", (e) => {
+        const interactive = e.target.closest(
+            "a, button, .cta-button, .stat-box, .skill-card, .project-card, .contact-card"
+        );
+        if (!interactive) return;
+
+        clickSound.currentTime = 0;
+        clickSound.volume = 0.25;
+
+        clickSound.play().catch(err =>
+            console.warn("🔇 Audio blocked:", err)
+        );
+    });
+})();
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.timeline-item, .skill-card, .project-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        // Fun console message
+        console.log('%c👋 Hey there, curious mind!', 'color: #3b82f6; font-size: 20px; font-weight: bold;');
+        console.log('%cI\'m Bhashi - a data analyst who loves clean code and messy datasets.', 'color: #1a1a1a; font-size: 14px;');
+        console.log('%c📊 Let\'s connect: bhashi.one@gmail.com', 'color: #10b981; font-size: 14px; font-weight: bold;');
+    </script>
+</body>
+</html>
